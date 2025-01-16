@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celebs</title>
+  </head>
+  <body>
+    <h1>Here are Celebs</h1>
+    <p>Well Hello There</p>
+    <ul>
+      <% celebs.map( (person) => { %>
+      <li><%= person.name %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

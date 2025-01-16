@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cats</title>
+  </head>
+  <body>
+    <h1>Here are cats</h1>
+    <p>Meow</p>
+    <ul>
+      <% cats.map( (kitty) => { %>
+      <li><%= kitty.name %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

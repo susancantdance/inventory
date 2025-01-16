@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breeds</title>
+  </head>
+  <body>
+    <h1>Here are Breeds</h1>
+    <p>Adopt don't shop fuckers</p>
+    <ul>
+      <% breeds.map( (breed) => { %>
+      <li><%= breed.breed %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

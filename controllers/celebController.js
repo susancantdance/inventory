@@ -1,10 +1,35 @@
-//celeb controller
+const db = require("../db/queries");
 
-exports.celebReadGet = (req, res) => {};
+async function celebReadGet(req, res) {
+  const celebs = await db.getCelebs();
+  res.render("celebs", { celebs: celebs });
+}
 
-exports.celebCreateGet = (req, res) => {};
-exports.celebCreatePost = (req, res) => {};
+async function celebCreateGet(req, res) {
+  res.send("hi");
+}
 
-exports.celebUpdateGet = (req, res) => {};
-exports.celebUpdatePost = (req, res) => {};
-exports.celebDeletePost = (req, res) => {};
+async function celebCreatePost(req, res) {
+  res.send("hi");
+}
+
+async function celebUpdateGet(req, res) {
+  res.send("hi");
+}
+
+async function celebUpdatePost(req, res) {
+  res.send("hi");
+}
+
+async function celebDeletePost(req, res) {
+  res.send("hi");
+}
+
+module.exports = {
+  celebReadGet,
+  celebCreatePost,
+  celebCreateGet,
+  celebUpdateGet,
+  celebUpdatePost,
+  celebDeletePost,
+};

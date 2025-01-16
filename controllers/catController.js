@@ -1,8 +1,36 @@
-exports.catReadGet = (req, res) => {};
+const db = require("../db/queries");
 
-exports.catCreateGet = (req, res) => {};
-exports.catCreatePost = (req, res) => {};
+async function catReadGet(req, res) {
+  console.log("in the catreadget function");
+  const cats = await db.getCats();
+  res.render("cats", { cats: cats });
+}
 
-exports.catUpdateGet = (req, res) => {};
-exports.catUpdatePost = (req, res) => {};
-exports.catDeletePost = (req, res) => {};
+async function catCreateGet(req, res) {
+  res.send("hi");
+}
+
+async function catCreatePost(req, res) {
+  res.send("hi");
+}
+
+async function catUpdateGet(req, res) {
+  res.send("hi");
+}
+
+async function catUpdatePost(req, res) {
+  res.send("hi");
+}
+
+async function catDeletePost(req, res) {
+  res.send("hi");
+}
+
+module.exports = {
+  catReadGet,
+  catCreatePost,
+  catCreateGet,
+  catUpdateGet,
+  catUpdatePost,
+  catDeletePost,
+};
