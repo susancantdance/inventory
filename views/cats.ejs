@@ -10,7 +10,7 @@
     <p>Meow</p>
     <ul>
       <% cats.map( (kitty) => { %>
-      <li><%= kitty.name %></li>
+      <li><a href="/cats/<%=kitty.name%>/cat_detail"><%= kitty.name %></a></li>
       <% }); %>
     </ul>
   </body>

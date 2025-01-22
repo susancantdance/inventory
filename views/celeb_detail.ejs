@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details about <%= celeb_name %></title>
+    <style>
+        .row {display: flex;}
+        form {display: inline;}
+    </style>
+  </head>
+  <body>
+    <h1><%= celeb_name %>'s Kittays!</h1>
+      <% cats_owned.map( (cat) => { %>
+        <p class="row">
+          <form method="POST" action="/cats/<%=cat.cat_name%>/update">
+            <input type="text" name="newname" value="<%= cat.cat_name%>" ></input>
+            <input type="hidden" name="oldname" value="<%= cat.cat_name%>"></input>
+            <input type="hidden" name="celeb_name" value="<%=celeb_name %>"></input>
+            <button type="submit">Update</button>
+          </form>
+          <form method="POST" action="/cats/<%=cat.cat_name%>/delete">
+            <input type="hidden" name="celeb_name" value="<%=celeb_name %>"></input>
+            <button type="submit">Delete</button>
+          </form>
+        </p>
+        <br><br>
+      <% }) %>
+ 
+  </body>
+</html>

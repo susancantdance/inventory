@@ -8,10 +8,10 @@ breedRouter.get("/create", breedController.breedCreateGet);
 
 breedRouter.post("/create", breedController.breedCreatePost);
 
-breedRouter.get("/update", breedController.breedUpdateGet);
+breedRouter.get("/:breedid/update", breedController.breedUpdateGet);
 
-breedRouter.post("/update", breedController.breedUpdatePost);
+breedRouter.post("/:breedid/update", breedController.breedUpdatePost);
 
-breedRouter.post("/delete", breedController.breedDeletePost);
+breedRouter.post("/:breedid/delete", breedController.breedDeletePost);
 
 module.exports = breedRouter;

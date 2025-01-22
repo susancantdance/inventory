@@ -7,12 +7,14 @@ async function celebReadGet(req, res) {
 
   celebs.forEach((row) => {
     let catArray = [];
+    console.log(row.celeb_name);
+    console.log(catArray);
     if (celebMap.get(row.celeb_name) == undefined) {
       celebMap.set(row.celeb_name, catArray);
     } else {
       catArray = celebMap.get(row.celeb_name).slice();
     }
-    const cat = { name: row.cat_name, breed: row.breed };
+    const cat = { id: row.cat_id, name: row.cat_name, breed: row.breed };
     catArray.push(cat);
     celebMap.set(row.celeb_name, catArray);
   });
@@ -21,9 +23,8 @@ async function celebReadGet(req, res) {
 }
 
 async function celebCreateGet(req, res) {
-  const cats = await db.getCats();
   const breeds = await db.getBreeds();
-  res.render("create_celeb", { cats: cats, breeds: breeds });
+  res.render("create_celeb", { breeds: breeds });
 }
 
 async function celebCreatePost(req, res) {
@@ -33,6 +34,17 @@ async function celebCreatePost(req, res) {
   await db.addRelation(values.name, values.newcat);
 
   res.redirect("/celebs");
+}
+
+async function celebDetailGet(req, res) {
+  const cats_owned = await db.getCelebDetail(req.params.celebname);
+  res.render("celeb_detail", {
+    cats_owned: cats_owned,
+    celeb_name: req.params.celebname,
+  });
+  //   res.send(
+  //     `here is the detail about ${req.params.celebname}: ${cats_owned[0].cat_name}`
+  //   );
 }
 
 async function celebUpdateGet(req, res) {
@@ -51,6 +63,7 @@ module.exports = {
   celebReadGet,
   celebCreatePost,
   celebCreateGet,
+  celebDetailGet,
   celebUpdateGet,
   celebUpdatePost,
   celebDeletePost,

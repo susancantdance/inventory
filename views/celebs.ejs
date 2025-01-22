@@ -10,7 +10,9 @@
     <p>Well Hello There</p>
     <ul>
       <% celebs.forEach( (value, key) => { %>
-      <li><%= key %></li>
+      <li>
+        <a href="/celebs/<%=key %>/celeb_detail"><%= key %></a>
+      </li>
       <% if(value != []){ %>
       <ul>
         <% value.forEach( (cat) => { %>

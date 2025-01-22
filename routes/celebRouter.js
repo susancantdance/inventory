@@ -8,10 +8,13 @@ celebRouter.get("/create", celebController.celebCreateGet);
 
 celebRouter.post("/create", celebController.celebCreatePost);
 
-celebRouter.get("/update", celebController.celebUpdateGet);
+//these need an additional paramater /celeb/::id/update etc
+celebRouter.get("/:celebname/celeb_detail", celebController.celebDetailGet);
 
-celebRouter.post("/update", celebController.celebUpdatePost);
+celebRouter.get("/:celebname/update", celebController.celebUpdateGet);
 
-celebRouter.post("/delete", celebController.celebDeletePost);
+celebRouter.post("/:celebname/update", celebController.celebUpdatePost);
+
+celebRouter.post("/:celebname/delete", celebController.celebDeletePost);
 
 module.exports = celebRouter;

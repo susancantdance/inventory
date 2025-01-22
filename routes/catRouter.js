@@ -8,10 +8,12 @@ catRouter.get("/create", catController.catCreateGet);
 
 catRouter.post("/create", catController.catCreatePost);
 
-catRouter.get("/update", catController.catUpdateGet);
+catRouter.get("/:catname/cat_detail", catController.catDetailGet);
 
-catRouter.post("/update", catController.catUpdatePost);
+catRouter.get("/:catname/update", catController.catUpdateGet);
 
-catRouter.post("/delete", catController.catDeletePost);
+catRouter.post("/:catname/update", catController.catUpdatePost);
+
+catRouter.post("/:catname/delete", catController.catDeletePost);
 
 module.exports = catRouter;
