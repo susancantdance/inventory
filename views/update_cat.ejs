@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a new cat</title>
+  </head>
+  <body>
+    <form method="POST" action="/cats/create">
+      <h1>Add a cat</h1>
+      <label>Name: <input type="text" name="name" required /> </label>
+      <label
+        >Breed:
+        <select name="breed">
+          <% breeds.map( (breed) => { %>
+          <option value="<%= breed.breed %>"><%= breed.breed %></option>
+          <% }) %>
+        </select>
+      </label>
+      <button type="submit">Add Cat</button>
+    </form>
+  </body>
+</html>

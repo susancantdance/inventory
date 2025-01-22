@@ -6,11 +6,13 @@ async function breedReadGet(req, res) {
 }
 
 async function breedCreateGet(req, res) {
-  res.send("hi");
+  res.render("create_breed");
 }
 
 async function breedCreatePost(req, res) {
-  res.send("hi");
+  const breed = req.body;
+  await db.addBreed(breed.name);
+  res.redirect("/breeds");
 }
 
 async function breedUpdateGet(req, res) {

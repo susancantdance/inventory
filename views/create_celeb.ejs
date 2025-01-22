@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a new celebrity</title>
+  </head>
+  <body>
+    <form method="POST" action="/celebs/create">
+      <h1>Add a celeb</h1>
+      <label>Name: <input type="text" name="name" required /> </label><br />
+      <!-- <label>Cat: <input type="text" name="cat" /> </label> -->
+      <!-- <label
+        >Cat:
+        <select name="cat">
+          <option value="newcat">New Cat (Add Below)</option>
+          <% cats.map( (cat) => { %>
+          <option value="<%= cat.name %>"><%= cat.name %></option>
+          <% }) %>
+        </select>
+      </label> -->
+      <br />
+      <label>New Cat: <input type="text" name="newcat" required /></label>
+      <br />
+      <label
+        >Breed:
+        <select name="breed">
+          <% breeds.map( (breed) => { %>
+          <option value="<%= breed.breed %>"><%= breed.breed %></option>
+          <% }) %>
+        </select>
+      </label>
+      <button type="submit">Add Celeb & Cat</button>
+    </form>
+  </body>
+</html>

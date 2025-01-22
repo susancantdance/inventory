@@ -9,9 +9,16 @@
     <h1>Here are Celebs</h1>
     <p>Well Hello There</p>
     <ul>
-      <% celebs.map( (person) => { %>
-      <li><%= person.name %></li>
-      <% }); %>
+      <% celebs.forEach( (value, key) => { %>
+      <li><%= key %></li>
+      <% if(value != []){ %>
+      <ul>
+        <% value.forEach( (cat) => { %>
+        <li><b>Name:</b> <%= cat.name %> <b>Breed:</b> <%= cat.breed %></li>
+
+        <% }); %>
+      </ul>
+      <% } %> <% }); %>
     </ul>
   </body>
 </html>

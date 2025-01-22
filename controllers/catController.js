@@ -7,11 +7,14 @@ async function catReadGet(req, res) {
 }
 
 async function catCreateGet(req, res) {
-  res.send("hi");
+  const breeds = await db.getBreeds();
+  res.render("create_cat", { breeds: breeds });
 }
 
 async function catCreatePost(req, res) {
-  res.send("hi");
+  const cat = req.body;
+  await db.addCat(cat.name, cat.breed);
+  res.redirect("/cats");
 }
 
 async function catUpdateGet(req, res) {
