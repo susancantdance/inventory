@@ -27,11 +27,11 @@ async function celebCreateGet(req, res) {
   res.render("create_celeb", { breeds: breeds });
 }
 
-try {
-  async function celebCreatePost(req, res) {
-    const values = req.body;
-    console.log(`existingcat ${values.existingcat}`);
-    console.log(`newcat ${values.newcat}`);
+async function celebCreatePost(req, res) {
+  const values = req.body;
+  console.log(`existingcat ${values.existingcat}`);
+  console.log(`newcat ${values.newcat}`);
+  try {
     await db.addCeleb(values.name);
     if (values.existingcat != "yes") {
       console.log("this is not an existing cat");
@@ -42,9 +42,9 @@ try {
       await db.addRelation(values.name, values.newcat);
       res.redirect("/cats/" + values.newcat + "/cat_detail");
     }
+  } catch (error) {
+    alert("There was an error.");
   }
-} catch (error) {
-  alert("There was an error.");
 }
 
 async function celebDetailGet(req, res) {
