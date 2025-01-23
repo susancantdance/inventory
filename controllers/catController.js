@@ -12,13 +12,14 @@ async function catCreateGet(req, res) {
 }
 
 async function catCreatePost(req, res) {
-  const cat = req.body;
-  await db.addCat(cat.name, cat.breed);
-  res.redirect("/cats");
+  await db.addCat(req.body.name, req.body.breed);
+  await db.addRelation(req.body.celeb_name, req.body.name);
+  res.redirect("/celebs/" + req.body.celeb_name + "/celeb_detail");
 }
 
 async function catDetailGet(req, res) {
-  res.send(`This is detail page for ${req.params.catname}`);
+  const owners = await db.getCatDetail(req.params.catname);
+  res.render("cat_detail", { cat: req.params.catname, owners: owners });
 }
 
 async function catUpdateGet(req, res) {

@@ -51,6 +51,7 @@ async function addRelation(celeb, cat) {
   ]);
   const cat_id = await pool.query("SELECT id FROM cat WHERE name=$1", [cat]);
   console.log(celeb_id.rows[0].id);
+  console.log(cat_id.rows[0].id);
 
   await pool.query("INSERT INTO owner_cat (celeb_id, cat_id) VALUES ($1,$2)", [
     celeb_id.rows[0].id,
@@ -60,6 +61,15 @@ async function addRelation(celeb, cat) {
   //   "INSERT INTO owner_cat (celeb_id, cat_id) VALUES ((SELECT id FROM celebrity WHERE name=($1))),(SELECT id FROM cat WHERE name=($2)))",
   //   [celeb, cat]
   // );
+}
+
+async function getCatDetail(cat_name) {
+  const { rows } = await pool.query(
+    "SELECT celebrity.name AS name FROM celebrity JOIN (SELECT * FROM (SELECT cat_id, cat.name, celeb_id FROM owner_cat JOIN cat ON cat.id = owner_cat.cat_id) AS subtable WHERE name=$1) AS CatTable ON celeb_id = celebrity.id",
+    [cat_name]
+  );
+  console.log(rows);
+  return rows;
 }
 
 async function updateCat(oldName, newName) {
@@ -94,6 +104,7 @@ module.exports = {
   deleteCeleb,
   getCats,
   addCat,
+  getCatDetail,
   updateCat,
   deleteCat,
   addRelation,

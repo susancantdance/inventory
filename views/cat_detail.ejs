@@ -3,7 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>This page is about <%=cat%></title>
   </head>
-  <body></body>
+  <body>
+    <h1><%=cat%></h1>
+    <h3>is owned by</h3>
+    <ul>
+      <% owners.map ( (owner) => { %>
+      <li><%= owner.name %></li>
+      <% }) %>
+    </ul>
+    <h2>Add another owner for <%=cat%></h2>
+    <form method="POST" action="/celebs/create">
+      <input type="text" name="name"></input>
+      <input type="hidden" name="newcat" value="<%= cat%>"></input>
+      <input type="hidden" name="existingcat" value="yes"></input>
+      <button type="submit">Add Owner</button>
+    </form>
+  </body>
 </html>
